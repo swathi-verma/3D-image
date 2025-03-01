@@ -1,0 +1,89 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(45deg, #2c3e50, #4ca1af);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+/* Gallery Container */
+.gallery-container {
+    perspective: 1200px;
+    position: relative;
+    width: 600px; /* Increased width */
+    height: 600px; /* Increased height */
+}
+
+/* Rotating Gallery */
+.gallery {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    animation: rotate 10s linear infinite;
+}
+
+/* Increased Image Box Size */
+.image-box {
+    position: absolute;
+    width: 250px; /* Increased size */
+    height: 250px; /* Increased size */
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    transition: filter 0.3s;
+}
+
+/* Positioning Images in a Circular Layout */
+.image-box:nth-child(1) { transform: rotateY(0deg) translateZ(350px); }
+.image-box:nth-child(2) { transform: rotateY(72deg) translateZ(350px); }
+.image-box:nth-child(3) { transform: rotateY(144deg) translateZ(350px); }
+.image-box:nth-child(4) { transform: rotateY(216deg) translateZ(350px); }
+.image-box:nth-child(5) { transform: rotateY(288deg) translateZ(350px); }
+
+/* Image Styling */
+.image-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Hover Effect (Brightness Only, No Zoom) */
+.image-box:hover {
+    filter: brightness(1.2);
+}
+
+/* Circular Rotation Animation */
+@keyframes rotate {
+    from {
+        transform: rotateY(0deg);
+    }
+    to {
+        transform: rotateY(360deg);
+    }
+}
+
+/* Download Button */
+.download-btn {
+    display: block;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 8px; /* Slightly larger padding */
+    font-size: 16px; /* Slightly larger font */
+    text-decoration: none;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+/* Show Download Button on Hover */
+.image-box:hover .download-btn {
+    opacity: 1;
+}
